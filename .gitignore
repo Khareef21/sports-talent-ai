@@ -1,0 +1,9 @@
+.venv/
+server/venv/
+client/node_modules/
+client/.next/
+__pycache__/
+*.pyc
+.env
+*.task
+.DS_Store

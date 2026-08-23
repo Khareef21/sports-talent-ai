@@ -1,0 +1,16 @@
+{
+  "name": "sports-talent-ai-client",
+  "private": true,
+  "scripts": {
+    "predev": "node scripts/clean-next.js",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "next": "14.2.15",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "@supabase/supabase-js": "2.45.1"
+  }
+}

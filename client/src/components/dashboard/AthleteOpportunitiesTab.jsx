@@ -1,0 +1,13 @@
+import React, { useState } from 'react';
+import AppIcon from '../ui/AppIcon';
+
+const opportunities = [
+  { title: 'National Youth Athletics Camp', type: 'Trial', location: 'Bengaluru', deadline: '12 Sep 2026', detail: 'U18 long jump and sprint development cohort.' },
+  { title: 'Rising Stars Scholarship', type: 'Scholarship', location: 'India-wide', deadline: '30 Sep 2026', detail: 'Performance-based support for emerging athletes.' },
+  { title: 'City League Open Trials', type: 'Team opportunity', location: 'Mumbai', deadline: '18 Oct 2026', detail: 'Open assessment day for track and field athletes.' },
+];
+
+export default function AthleteOpportunitiesTab() {
+  const [applied, setApplied] = useState([]);
+  return <div className="space-y-6"><div className="kp-card kp-card-hoverable p-6 border-l-4 border-l-[#74c9ff]"><div className="kp-kicker">Opportunities</div><h2 className="text-3xl font-black text-white">Find your next opportunity</h2><p className="text-sm text-[#a1afc7] mt-2">Apply to trials, scholarships, and team opportunities that match your performance profile.</p></div><div className="grid lg:grid-cols-3 gap-4">{opportunities.map((opportunity) => { const isApplied = applied.includes(opportunity.title); return <div key={opportunity.title} className="kp-card kp-card-hoverable p-5 flex flex-col"><div className="flex justify-between gap-2"><span className="kp-pill active">{opportunity.type}</span><span className="text-xs text-[#7a8aa7]">{opportunity.deadline}</span></div><h3 className="text-xl font-black text-white mt-4">{opportunity.title}</h3><p className="text-xs text-[#74c9ff] mt-2">{opportunity.location}</p><p className="text-sm text-[#a1afc7] mt-3 flex-1">{opportunity.detail}</p><button onClick={() => setApplied((current) => isApplied ? current.filter((title) => title !== opportunity.title) : [...current, opportunity.title])} className={`w-full mt-5 py-2.5 rounded-lg text-sm font-bold ${isApplied ? 'border border-[#d4ff4d] text-[#d4ff4d]' : 'kp-button'}`}>{isApplied ? <><AppIcon name="check" size={14} /> Application submitted</> : <><AppIcon name="arrow" size={14} /> Apply now</>}</button></div>; })}</div><div className="kp-card kp-card-hoverable p-5"><div className="kp-kicker">Recommendations</div><h3 className="text-xl font-black text-white">Strengthen your scouting profile</h3><div className="grid md:grid-cols-3 gap-3 mt-4"><p className="kp-card-soft p-4 text-sm text-[#a1afc7]">Upload a recent match or training video.</p><p className="kp-card-soft p-4 text-sm text-[#a1afc7]">Add your coach and current club details.</p><p className="kp-card-soft p-4 text-sm text-[#a1afc7]">Complete another validated assessment.</p></div></div></div>;
+}
